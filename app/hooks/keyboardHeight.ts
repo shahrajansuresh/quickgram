@@ -7,7 +7,6 @@ export const useKeyboard = () => {
   console.log({isVisible});
   useEffect(() => {
     function onKeyboardDidShow(e: KeyboardEvent) {
-      // Remove type here if not using TypeScript
       setKeyboardHeight(e.endCoordinates.height);
     }
 
