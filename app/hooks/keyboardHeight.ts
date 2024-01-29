@@ -3,8 +3,6 @@ import {Keyboard, KeyboardEvent} from 'react-native';
 
 export const useKeyboard = () => {
   const [keyboardHeight, setKeyboardHeight] = useState(0);
-  const isVisible = Keyboard.isVisible();
-  console.log({isVisible});
   useEffect(() => {
     function onKeyboardDidShow(e: KeyboardEvent) {
       setKeyboardHeight(e.endCoordinates.height);
@@ -24,9 +22,10 @@ export const useKeyboard = () => {
     );
     return () => {
       showSubscription.remove();
+      showSubscription.remove();
       hideSubscription.remove();
     };
-  }, [isVisible]);
+  }, []);
 
   return keyboardHeight;
 };

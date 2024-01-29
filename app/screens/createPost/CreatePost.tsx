@@ -86,8 +86,8 @@ const CreatePost = ({navigation}: any) => {
     // condition for mentioning user if user typed '@'
     if (String(text).includes(' @')) {
       setIsMentioning(true);
-    } else if (isMentioning) {
-      setIsMentioning(false);
+    } else if (text.length > 0) {
+      isMentioning && setIsMentioning(false);
 
       // removing all selected mention. if user remove mentioned user
       let textArray = text.split(' ');
