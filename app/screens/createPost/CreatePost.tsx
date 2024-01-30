@@ -82,7 +82,7 @@ const CreatePost = ({navigation}: any) => {
   const HandleDescriptionInput = (text: any) => {
     setdescription(text);
     // condition for mentioning user if user typed '@'
-    if (String(text).includes(' @')) {
+    if (String(text).split(' ').includes('@')) {
       setIsMentioning(true);
     } else if (text.length > 0) {
       isMentioning && setIsMentioning(false);
@@ -95,6 +95,8 @@ const CreatePost = ({navigation}: any) => {
         });
         setmentions(newMentions);
       }
+    } else {
+      isMentioning && setIsMentioning(false);
     }
   };
 
@@ -104,7 +106,7 @@ const CreatePost = ({navigation}: any) => {
     oldMentions.push(newMention.name);
     setmentions(oldMentions);
     let text = description;
-    let newText = text.replace(/\B@[\w-]+/g, `${newMention.name} `);
+    let newText = text.replace(/ @(?=\s|$)/g, ` ${newMention.name} `);
     setdescription(newText);
     setIsMentioning(false);
   };
