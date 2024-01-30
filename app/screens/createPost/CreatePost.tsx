@@ -104,7 +104,7 @@ const CreatePost = ({navigation}: any) => {
     oldMentions.push(newMention.name);
     setmentions(oldMentions);
     let text = description;
-    let newText = text.replace(/@/g, `${newMention.name} `);
+    let newText = text.replace(/\B@[\w-]+/g, `${newMention.name} `);
     setdescription(newText);
     setIsMentioning(false);
   };
