@@ -82,7 +82,7 @@ const CreatePost = ({navigation}: any) => {
   const HandleDescriptionInput = (text: any) => {
     setdescription(text);
     // condition for mentioning user if user typed '@'
-    if (String(text).split(' ').includes('@')) {
+    if (String(text).split(' ').includes('@') || text === '@') {
       setIsMentioning(true);
     } else if (text.length > 0) {
       isMentioning && setIsMentioning(false);
