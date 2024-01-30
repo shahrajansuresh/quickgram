@@ -8,6 +8,7 @@ import {styles} from './style';
 
 // type imports
 import {ImageType} from '../../redux/features/slices/postSlice';
+import {universalStyle} from '../../constants/universalStyles';
 
 export interface PreviewModalPropsType {
   Preview: boolean;
@@ -44,7 +45,7 @@ const PreviewModal = ({
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => HidePreview()}>
-              <Text style={styles.textStyle}>Close</Text>
+              <Text style={[universalStyle.font, styles.textStyle]}>Close</Text>
             </Pressable>
           </View>
         </View>

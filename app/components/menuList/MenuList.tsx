@@ -38,7 +38,6 @@ const MenuList = ({
     return () => {};
   }, [menuItems, selectedItems, valueName]);
   const keyboardHeight = useKeyboard();
-  console.log(keyboardHeight);
   return (
     <View style={[styles.menuList, {bottom: keyboardHeight}]}>
       {AvailableItems.length > 0 ? (
@@ -48,16 +47,16 @@ const MenuList = ({
           renderItem={({item}) => (
             <Pressable
               onPress={() => onItemSelection(item)}
-              style={styles.Menuitem}>
-              <Text>{item[valueName]}</Text>
+              style={styles.menuItem}>
+              <Text style={styles.menuItemText}>{item[valueName]}</Text>
             </Pressable>
           )}
           keyExtractor={item => String(item[keyName])}
           showsVerticalScrollIndicator={false}
         />
       ) : (
-        <Pressable disabled style={styles.Menuitem}>
-          <Text>{EmptyText}</Text>
+        <Pressable disabled style={styles.menuItem}>
+          <Text style={styles.menuItemText}>{EmptyText}</Text>
         </Pressable>
       )}
     </View>

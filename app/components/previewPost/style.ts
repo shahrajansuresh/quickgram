@@ -1,38 +1,42 @@
 import {StyleSheet} from 'react-native';
-import {windowWidth} from '../../constants/styleConstant';
+import {
+  HORIZONTAL_DIMENSIONS,
+  VERTICAL_DIMENSIONS,
+  _DEVICE_WIDTH,
+} from '../../constants/Dimensions';
 
 export const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 22,
+    marginTop: VERTICAL_DIMENSIONS._22,
   },
   modalView: {
     width: '100%',
     height: '100%',
-    margin: 20,
+    margin: HORIZONTAL_DIMENSIONS._20,
     backgroundColor: 'rgba(0,0,0,0.5)',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    padding: 35,
+    borderTopLeftRadius: VERTICAL_DIMENSIONS._20,
+    borderTopRightRadius: VERTICAL_DIMENSIONS._20,
+    padding: HORIZONTAL_DIMENSIONS._36,
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: VERTICAL_DIMENSIONS._2,
     },
     shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
+    shadowRadius: VERTICAL_DIMENSIONS._5,
+    elevation: VERTICAL_DIMENSIONS._5,
   },
   button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
+    borderRadius: VERTICAL_DIMENSIONS._20,
+    padding: HORIZONTAL_DIMENSIONS._10,
+    elevation: VERTICAL_DIMENSIONS._2,
     position: 'absolute',
-    bottom: 50,
+    bottom: VERTICAL_DIMENSIONS._50,
   },
   buttonOpen: {
     backgroundColor: '#F194FF',
@@ -46,13 +50,13 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
   },
   modalText: {
-    marginBottom: 15,
+    marginBottom: VERTICAL_DIMENSIONS._15,
     textAlign: 'center',
   },
 
   ImagePreview: {
-    width: windowWidth - 20,
-    minHeight: 300,
+    width: _DEVICE_WIDTH - HORIZONTAL_DIMENSIONS._20,
+    minHeight: VERTICAL_DIMENSIONS._300,
   },
   backgroundVideo: {
     position: 'absolute',

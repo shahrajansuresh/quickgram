@@ -24,6 +24,7 @@ import {
   postsListState,
 } from '../../redux/features/slices/postSlice';
 import RemoveButton from '../removeButton/RemoveButton';
+import {universalStyle} from '../../constants/universalStyles';
 
 // component for creating description with mentioned description in dark text
 export const CreateDescription = ({
@@ -34,22 +35,22 @@ export const CreateDescription = ({
   AllFollowedUsers: string[];
 }) => {
   let textArray = text.split(' ');
-  console.log({textArray});
   return (
     <View style={styles.descriptionBox}>
       {textArray.length > 0 ? (
         textArray.map((word: string, index: number) => {
           if (AllFollowedUsers.includes(word)) {
-            console.log({word});
             return (
-              <Text style={styles.mentions} key={String(index)}>
+              <Text
+                style={[universalStyle.font, styles.mentions]}
+                key={String(index)}>
                 {index ? ' ' : ''}
                 {word}
               </Text>
             );
           } else {
             return (
-              <Text key={String(index)}>
+              <Text key={String(index)} style={universalStyle.font}>
                 {index ? ' ' : ''}
                 {word}
               </Text>
@@ -57,7 +58,7 @@ export const CreateDescription = ({
           }
         })
       ) : (
-        <Text> {text}</Text>
+        <Text style={universalStyle.font}> {text}</Text>
       )}
     </View>
   );
@@ -121,7 +122,10 @@ export const Posts = ({
             } else if (index === 3) {
               return (
                 <View style={styles.remainingImages}>
-                  <Text> +{postImages.length - 3}</Text>
+                  <Text style={universalStyle.font}>
+                    {' '}
+                    +{postImages.length - 3}
+                  </Text>
                 </View>
               );
             } else {
@@ -167,7 +171,10 @@ export const PostsCard = ({
           likes={postItem.liked}
           onPress={() => dispatch(handleLike(postItem.id))}
         />
-        <Text style={styles.likesCount}> {postItem.liked ? 1 : 0} </Text>
+        <Text style={[universalStyle.font, styles.likesCount]}>
+          {' '}
+          {postItem.liked ? 1 : 0}{' '}
+        </Text>
       </View>
     </View>
   );

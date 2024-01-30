@@ -4,6 +4,7 @@ import React from 'react';
 
 // style imports
 import {styles} from './styles';
+import {universalStyle} from '../../constants/universalStyles';
 
 // constant imports
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
@@ -27,7 +28,7 @@ export interface UserTabPropsType {
 const UserTab = ({userDetails, handleFollow}: UserTabPropsType) => {
   return (
     <View style={styles.userTab}>
-      <Text>{userDetails.name}</Text>
+      <Text style={universalStyle.font}>{userDetails.name}</Text>
       <CustomButton
         {...{
           label: userDetails.following ? 'Unfollow' : 'Follow',

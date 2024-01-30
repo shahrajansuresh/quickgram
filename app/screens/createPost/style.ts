@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {Appcolors} from '../../constants/styleConstant';
+import {HORIZONTAL_DIMENSIONS} from '../../constants/Dimensions';
 // import {windowHeight, windowWidth} from '../../constants/StyleConstant';
 
 export const styles = StyleSheet.create({
@@ -8,21 +9,22 @@ export const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   textInput: {
-    padding: 5,
+    padding: HORIZONTAL_DIMENSIONS._5,
   },
   TextInputBox: {
-    borderWidth: 0.5,
+    borderRadius: HORIZONTAL_DIMENSIONS._5,
+    borderWidth: HORIZONTAL_DIMENSIONS._2,
     borderColor: Appcolors.disabled,
-    margin: 5,
+    margin: HORIZONTAL_DIMENSIONS._5,
   },
   inputLabel: {
     fontWeight: 'bold',
-    padding: 5,
+    padding: HORIZONTAL_DIMENSIONS._5,
   },
   dropContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 10,
+    padding: HORIZONTAL_DIMENSIONS._10,
   },
   ButtonContainer: {
     flexDirection: 'row',

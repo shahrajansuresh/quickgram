@@ -14,7 +14,7 @@ const ImageDropBox = (props: PressableProps) => {
       />
 
       <Text style={styles.dropText}>
-        Drop file Here or{' '}
+        Drop file here or{' '}
         <Text style={styles.clickText}>click here to upload</Text>{' '}
       </Text>
     </Pressable>

@@ -25,6 +25,7 @@ import {
   postsListState,
 } from '../../redux/features/slices/postSlice';
 import {id} from '../../utils/generateId';
+import {universalStyle} from '../../constants/universalStyles';
 
 const CreatePost = ({navigation}: any) => {
   // users and post list from redux
@@ -56,12 +57,9 @@ const CreatePost = ({navigation}: any) => {
 
     launchImageLibrary(options, response => {
       if (response.didCancel) {
-        console.log('User cancelled image picker');
       } else if (response.errorMessage) {
-        console.log('Image picker error: ', response.errorMessage);
       } else {
         // let Uri = response.uri || response.assets?.[0]?.uri;
-        console.log(JSON.stringify(response));
         if (response.assets && Array.isArray(response.assets)) {
           let ImageList: any[] = response.assets.map(item => {
             return {
@@ -155,10 +153,13 @@ const CreatePost = ({navigation}: any) => {
   return (
     <View style={styles.mainLayout}>
       <View style={styles.TextInputBox}>
-        <Text style={styles.inputLabel}>Description</Text>
+        <Text style={[universalStyle.font, styles.inputLabel]}>
+          Description
+        </Text>
         <TextInput
           editable
           multiline
+          autoFocus
           //   numberOfLines={3}
           onChangeText={text => HandleDescriptionInput(text)}
           value={description}
@@ -166,7 +167,7 @@ const CreatePost = ({navigation}: any) => {
         />
       </View>
       <View style={styles.TextInputBox}>
-        <Text style={styles.inputLabel}> Media </Text>
+        <Text style={[universalStyle.font, styles.inputLabel]}> Media </Text>
         {postImages ? (
           <Posts
             postImages={postImages}

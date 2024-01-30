@@ -33,7 +33,7 @@ const Tab = ({title, updateTab, selectedTab}: CustomTabPropsType) => {
           ...styles.TabBox,
         },
       ]}>
-      <Text>{title}</Text>
+      <Text style={styles.tabText}> {title}</Text>
     </Pressable>
   );
 };

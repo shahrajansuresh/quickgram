@@ -1,8 +1,12 @@
 import {StyleSheet} from 'react-native';
+import {
+  HORIZONTAL_DIMENSIONS,
+  VERTICAL_DIMENSIONS,
+} from '../../constants/Dimensions';
 
 export const styles = StyleSheet.create({
   image: {
-    width: 20,
-    height: 20,
+    width: HORIZONTAL_DIMENSIONS._20,
+    height: VERTICAL_DIMENSIONS._20,
   },
 });

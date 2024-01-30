@@ -14,4 +14,6 @@ export const Appcolors = {
   lightGrey: 'rgb(248,248,248)',
   darkgrey: 'rgb(192,192,192)',
   background: 'rgb(255,255,255)',
+  fontLight: 'rgb(248, 248, 255)',
+  fontDark: 'rgb(105, 105, 105)',
 };

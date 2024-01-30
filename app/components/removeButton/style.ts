@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {Appcolors, styleConfig} from '../../constants/styleConstant';
+import {HORIZONTAL_DIMENSIONS} from '../../constants/Dimensions';
 
 export const styles = StyleSheet.create({
   buttonBox: {
@@ -11,7 +12,7 @@ export const styles = StyleSheet.create({
     zIndex: 1,
   },
   image: {
-    width: 20,
-    height: 20,
+    width: HORIZONTAL_DIMENSIONS._20,
+    height: HORIZONTAL_DIMENSIONS._20,
   },
 });

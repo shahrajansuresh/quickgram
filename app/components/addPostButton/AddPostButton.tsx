@@ -12,7 +12,10 @@ const AddPostButton = ({
   return (
     <View style={[styles.buttonBox, {height: height}]}>
       <Pressable {...rest}>
-        <Image source={require('../../assets/icons/AddIcon.png')} />
+        <Image
+          source={require('../../assets/icons/AddIcon.png')}
+          style={styles.postButton}
+        />
       </Pressable>
     </View>
   );

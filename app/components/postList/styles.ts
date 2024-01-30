@@ -4,47 +4,54 @@ import {
   styleConfig,
   windowWidth,
 } from '../../constants/styleConstant';
+import {
+  HORIZONTAL_DIMENSIONS,
+  VERTICAL_DIMENSIONS,
+  _DEVICE_WIDTH,
+} from '../../constants/Dimensions';
+export const imageButtonDimension =
+  (_DEVICE_WIDTH - HORIZONTAL_DIMENSIONS._10 * 6) / 4;
 
 export const styles = StyleSheet.create({
   container: {
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingTop: 5,
+    paddingTop: VERTICAL_DIMENSIONS._5,
   },
   hpostBox: {
-    height: 100,
-    width: windowWidth - styleConfig.padding * 6,
+    height: VERTICAL_DIMENSIONS._100,
+    width: _DEVICE_WIDTH - HORIZONTAL_DIMENSIONS._5 * 6,
   },
   vPostBox: {
-    minHeight: 150,
-    width: windowWidth - styleConfig.padding * 4,
+    minHeight: VERTICAL_DIMENSIONS._150,
+    width: _DEVICE_WIDTH - HORIZONTAL_DIMENSIONS._5 * 4,
     padding: styleConfig.padding,
     backgroundColor: Appcolors.background,
     borderRadius: styleConfig.borderRadius,
-    margin: 5,
+    margin: VERTICAL_DIMENSIONS._5,
     borderWidth: 0.2,
     borderColor: Appcolors.disabled,
   },
   postBox: {
-    paddingTop: 5,
+    paddingTop: VERTICAL_DIMENSIONS._5,
   },
   postMessage: {
     width: windowWidth - styleConfig.padding * 6,
-    padding: 5,
+    padding: HORIZONTAL_DIMENSIONS._5,
   },
   shadowStyle: {
-    shadowRadius: 2,
+    shadowRadius: VERTICAL_DIMENSIONS._5,
     shadowOpacity: 0.5,
-    elevation: 4,
+    elevation: VERTICAL_DIMENSIONS._4,
     shadowColor: 'rgba(0,0,0,0.25)',
     shadowOffset: {
-      width: 2,
-      height: 1,
+      width: HORIZONTAL_DIMENSIONS._2,
+      height: VERTICAL_DIMENSIONS._1,
     },
   },
   likeBox: {
-    paddingLeft: 5,
-    height: 20,
+    paddingLeft: HORIZONTAL_DIMENSIONS._5,
+    height: VERTICAL_DIMENSIONS._20,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
@@ -54,15 +61,15 @@ export const styles = StyleSheet.create({
   },
 
   postImage: {
-    width: 90,
-    height: 100,
-    margin: 5,
+    width: imageButtonDimension,
+    height: imageButtonDimension,
+    marginHorizontal: VERTICAL_DIMENSIONS._5,
   },
 
   remainingImages: {
-    width: 90,
-    height: 90,
-    margin: 5,
+    width: imageButtonDimension,
+    height: imageButtonDimension,
+    marginHorizontal: VERTICAL_DIMENSIONS._5,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Appcolors.disabled,
