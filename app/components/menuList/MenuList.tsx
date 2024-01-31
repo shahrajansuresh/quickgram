@@ -10,33 +10,53 @@ export interface MenuListProps {
   keyName: string; // to provide key to flatlist
   valueName: string; // to get value while selection of item
   menuItems: MenuItems[]; // menu list for selection
+  filterText: string; // text for filtering users from the list
   selectedItems: string[]; // all selected menus
   EmptyText: string; // text to show when list is not available
   onItemSelection: (selectedItem: any) => void;
+  closeMenu: () => void;
 }
 
 const MenuList = ({
   menuItems,
   keyName,
+  filterText,
   valueName,
   selectedItems,
   EmptyText,
   onItemSelection,
+  closeMenu,
 }: MenuListProps) => {
   const [AvailableItems, setAvailableItems] = useState(menuItems);
 
   // To remove selected item from the available list .
   useEffect(() => {
     if (selectedItems.length > 0 && menuItems.length > 0) {
-      let newList = menuItems.filter(
-        menu => !selectedItems.includes(menu[valueName]),
-      );
+      let newList = menuItems.filter(menu => {
+        return (
+          !selectedItems.includes(menu[valueName]) &&
+          menu[valueName].includes(filterText.substring(1))
+        );
+      });
 
-      setAvailableItems(newList);
+      if (newList.length === 0) {
+        closeMenu();
+      } else {
+        setAvailableItems(newList);
+      }
+    } else if (filterText.substring(1).length > 0) {
+      let newList = menuItems.filter(menu => {
+        return menu[valueName].includes(filterText.substring(1));
+      });
+      if (newList.length === 0) {
+        closeMenu();
+      } else {
+        setAvailableItems(newList);
+      }
     }
 
     return () => {};
-  }, [menuItems, selectedItems, valueName]);
+  }, [menuItems, selectedItems, valueName, filterText, closeMenu]);
   const keyboardHeight = useKeyboard();
   return (
     <View style={[styles.menuList, {bottom: keyboardHeight}]}>

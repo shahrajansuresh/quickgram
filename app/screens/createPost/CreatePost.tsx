@@ -32,7 +32,8 @@ const CreatePost = ({navigation}: any) => {
   const userList = useSelector((store: RootState) => store.userList.value);
   const PostList = useSelector((store: RootState) => store.postList.value);
   const dispatch = useDispatch();
-
+  const [CurrentMatchingString, setCurrentMatchingString] =
+    useState<string>(''); // saving the last mention that starts with @ , to filter
   const [mentions, setmentions] = useState<string[]>([]); // saving all mention users in post description
   const [isMentioning, setIsMentioning] = useState(false); // flag to show mention user items
   const [description, setdescription] = useState<string>(''); // saving post description here
@@ -83,9 +84,9 @@ const CreatePost = ({navigation}: any) => {
     setdescription(text);
     // condition for mentioning user if user typed '@'
     // if (String(text).split(' ').includes('@') || text === '@') {
-    let AllMatchingString = String(text).match(/ @(?=$)/g);
-    console.log({AllMatchingString});
-    if (AllMatchingString || text === '@') {
+    let AllMatchingString = String(text).match(/@\w+|@(?!\s)/g);
+    if (AllMatchingString) {
+      setCurrentMatchingString(AllMatchingString[AllMatchingString.length - 1]);
       setIsMentioning(true);
     } else if (text.length > 0) {
       isMentioning && setIsMentioning(false);
@@ -110,13 +111,9 @@ const CreatePost = ({navigation}: any) => {
     setmentions(oldMentions);
     let text = description;
 
-    if (text === '@') {
-      let newText = text.replace('@', ` ${newMention.name} `);
-      setdescription(newText);
-    } else {
-      let newText = text.replace(/ @(?=$)/g, ` ${newMention.name} `);
-      setdescription(newText);
-    }
+    let newText = text.replace(CurrentMatchingString, ` ${newMention.name} `);
+    setdescription(newText);
+
     setIsMentioning(false);
   };
 
@@ -222,10 +219,12 @@ const CreatePost = ({navigation}: any) => {
         <MenuList
           menuItems={MentionList}
           selectedItems={mentions}
+          filterText={CurrentMatchingString}
           keyName="id"
           valueName="name"
           EmptyText="No User Found"
           onItemSelection={item => UpdateMentions(item)}
+          closeMenu={() => setIsMentioning(false)}
         />
       ) : (
         <></>

@@ -55,7 +55,7 @@ export const styles = StyleSheet.create({
   },
 
   ImagePreview: {
-    width: _DEVICE_WIDTH - HORIZONTAL_DIMENSIONS._20,
+    width: _DEVICE_WIDTH,
     minHeight: VERTICAL_DIMENSIONS._300,
   },
   backgroundVideo: {

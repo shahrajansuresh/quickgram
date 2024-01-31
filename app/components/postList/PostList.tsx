@@ -75,18 +75,22 @@ export const Posts = ({
   removeImages?: (id: string) => void;
 }) => {
   const [Preview, setPreview] = useState(false); // Flag to show preview modal
-  const [SelectedContent, setSelectedContent] = useState(postImages[0]); // Selected Content to show inside preview modal
+  const [SelectedContent, setSelectedContent] = useState(postImages); // Selected Content to show inside preview modal
+  const [selectedIndex, setSelectedIndex] = useState(0); // Selected Content to show inside preview modal
 
   // Handler to show Hide Preview
   const HidePreview = () => setPreview((preview: boolean) => !preview);
-  const ShowPreview = (item: ImageType) => {
+  const ShowPreview = (item: ImageType[], index: number) => {
     setSelectedContent(item);
+    setSelectedIndex(index);
     setPreview(true);
   };
 
   return (
     <>
-      <PreviewModal {...{Preview, HidePreview, content: SelectedContent}} />
+      <PreviewModal
+        {...{Preview, HidePreview, content: SelectedContent, selectedIndex}}
+      />
       <View style={[styles.hpostBox]}>
         <FlatList
           data={postImages}
@@ -101,7 +105,7 @@ export const Posts = ({
                   ) : (
                     <></>
                   )}
-                  <Pressable onPress={() => ShowPreview(item)}>
+                  <Pressable onPress={() => ShowPreview(postImages, index)}>
                     {item.type === 'image' || Platform.OS === 'android' ? (
                       <Image
                         source={{uri: item.Uri}}
